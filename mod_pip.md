@@ -90,11 +90,12 @@ Le script Python :
 2. **Construit** les DataFrames pour chaque dimension et la table de fait.
 3. **Crée** une base SQLite (`datawarehouse.db`) et les tables SQL correspondantes avec clés primaires/étrangères.
 4. **Insère** les données.
-5. **Ajoute des index** pour accélérer les requêtes (sur les clés étrangères).
+5. **Ajoute des index** pour accélérer les requêtes (sur les clés étrangères). 
+
 
 Exemple de création de table :
 
-```sql
+   sql
 CREATE TABLE Fait_Transaction (
     id_transaction INTEGER PRIMARY KEY,
     id_temps INTEGER,
@@ -107,7 +108,7 @@ CREATE TABLE Fait_Transaction (
     FOREIGN KEY (id_type) REFERENCES Dim_Type_Transaction(id_type),
     FOREIGN KEY (id_emetteur) REFERENCES Dim_Client(id_client),
     FOREIGN KEY (id_destinataire) REFERENCES Dim_Client(id_client)
-);
+); 
 
 ## 5. Cube OLAP (vues matérialisées)
 Bien que SQLite ne soit pas un serveur OLAP dédié, le script simule un cube multidimensionnel à l’aide de vues SQL qui agrègent les données selon plusieurs axes et niveaux de granularité.
@@ -123,6 +124,7 @@ Utilise des UNION ALL pour reproduire l’effet d’un ROLLUP.
 Mesures : nombre de transactions, nombre de fraudes, taux de fraude (%), montant total, montant moyen.
 
 ### 5.2 Vue Anomalies_Par_Emetteur
+
 Pour chaque émetteur, calcule :
 
 nombre total de transactions,
@@ -138,6 +140,7 @@ nombre de soldes vidés après transfert,
 montant total émis et montant moyen.
 
 ### 5.3 Vue Anomalies_Par_Destinataire
+
 Pour chaque destinataire, calcule :
 
 transactions reçues,
@@ -149,6 +152,7 @@ montants aberrants reçus,
 montant total et moyen reçu.
 
 ### 5.4 Vue Evolution_Fraude_Temporelle
+
 Suit l’évolution des fraudes dans le temps (step et tranche horaire).
 
 ### 6. Structuration des mesures
@@ -180,6 +184,7 @@ SELECT
 FROM Fait_Transaction;
 
 ## 7. Exemples de requêtes d’analyse
+
 ### 7.1 Taux de fraude par type de transaction
 
 SELECT t.type, t.categorie,
