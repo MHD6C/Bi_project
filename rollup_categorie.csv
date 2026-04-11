@@ -1,0 +1,4 @@
+categorie,nb_transactions,nb_fraudes,taux_fraude_pct,montant_total
+interne,26562,107,0.4028,8824741399.21
+sortant,29510,0,0.0,304419378.71
+entrant,13785,0,0.0,2328781965.37

@@ -1,0 +1,5 @@
+tranche_horaire,type_transaction,nb_transactions,nb_fraudes,taux_fraude_pct,montant_total
+nuit,TRANSFER,464,21,4.53,204631676.07
+nuit,CASH_OUT,682,23,3.37,120430980.11
+matin,TRANSFER,5709,32,0.56,4817930514.52
+matin,CASH_OUT,19707,31,0.16,3681748228.51
